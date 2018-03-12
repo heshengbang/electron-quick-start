@@ -1,8 +1,9 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-console.log("fuck renderer.js");
-function myClick1() {
-    console.log(new Date() + " -- 7");
-};
-myClick1();
+
+const newWindowBtn = document.getElementById('new-window')
+
+newWindowBtn.addEventListener('click', (event) => {
+  console.log("fuck you");
+})
