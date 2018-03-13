@@ -7,6 +7,9 @@
 // newWindowBtn.addEventListener('click', (event) => {
 //   console.log("fuck you");
 // });
+console.log("1");
+const ipcr = require('electron').ipcRenderer;
+
 
 const defaultBtn = document.getElementsByClassName("btn-default")[0];
 const primary = document.getElementsByClassName("btn-primary")[0];
@@ -20,8 +23,15 @@ const danger = document.getElementsByClassName("btn-danger")[0];
 const link = document.getElementsByClassName("btn-link")[0];
 
 defaultBtn.addEventListener('click', (event) => {
-  console.log("这是一个默认按钮");
+  console.log("默认按钮");
+  ipcr.send('event-msg', 'ping');
 });
+
+ipcr.on('event-reply', (event, arg) => {
+   let message = `message reply:${arg}`;
+   document.getElementById('msg-reply').innerHTML = message;
+});
+
 primary.addEventListener('click', (event) => {
   console.log("这是一个原始按钮");
 });
